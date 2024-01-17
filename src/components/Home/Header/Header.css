@@ -1,0 +1,22 @@
+.header-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.header-container-bg {
+    position: absolute;
+    width: 75%;
+    top: 20px;
+    left: 30px;
+    z-index: -1;
+}
+.header-container::after {
+    height: 700px;
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 30%;
+    right: 0;
+    background-color: #3A4256;
+    z-index: -1;
+}
