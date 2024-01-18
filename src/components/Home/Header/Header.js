@@ -1,16 +1,13 @@
 import React from 'react'
-import Navbar from '../Navbar/Navbar'
+
+import Navbar from '../../Shared/Navbar/Navbar'
 import HeaderMain from '../HeaderMain/HeaderMain'
-
-import chairbg from "../../../images/chairBg.png";
-
-import './Header.css'
 import BusinessInfo from '../BusinessInfo/BusinessInfo'
+import './Header.css'
 
 const Header = () => {
   return (
     <div className="header-container">
-        {/* <img className='header-container-bg' src={chairbg} alt="" /> */}
         <Navbar></Navbar>
         <HeaderMain></HeaderMain>
         <BusinessInfo></BusinessInfo>

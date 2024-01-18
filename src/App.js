@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter,  Route, Routes, useLocation, useNavigate, } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home/Home/Home';
+import Appointment from './components/Appointment/Appointment/Appointment';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
           
           <Routes>
             <Route path='/' element={<Home></Home>} />
+            <Route path='/appointment' element={<Appointment></Appointment>} />
             {/* <Route path='/shop' element={<Shop />} />
             <Route path='/product/:key' element={<ProductDetail />} />
             <Route path='/review' element={<Review />} />
