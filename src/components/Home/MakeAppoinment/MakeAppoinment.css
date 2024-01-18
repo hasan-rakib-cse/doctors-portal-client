@@ -1,0 +1,24 @@
+.make-appoinment {
+    background-image: url(../../../images//appointment-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    width: 100%;
+    height: 420px;
+    margin-bottom: 70px;
+}
+.make-appoinment::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgb(36, 41, 73);
+    opacity: .8;
+    top: 0;
+}
+.make-appoinment img {
+    height: 550px;
+    transform: translateY(-130px);
+}

@@ -3,11 +3,14 @@
     height: 100%;
     position: relative;
 }
-.header-container-bg {
+.header-container::before {
+    width: 85%;
+    height: 100%;
+    content: "";
     position: absolute;
-    width: 75%;
-    top: 20px;
-    left: 30px;
+    background-image: url("../../../images/chair.png");
+    background-size: cover;
+    opacity: .1;
     z-index: -1;
 }
 .header-container::after {

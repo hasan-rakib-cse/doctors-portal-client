@@ -10,7 +10,7 @@ import BusinessInfo from '../BusinessInfo/BusinessInfo'
 const Header = () => {
   return (
     <div className="header-container">
-        <img className='header-container-bg' src={chairbg} alt="" />
+        {/* <img className='header-container-bg' src={chairbg} alt="" /> */}
         <Navbar></Navbar>
         <HeaderMain></HeaderMain>
         <BusinessInfo></BusinessInfo>
