@@ -1,0 +1,51 @@
+.footer-area {
+    background-image: url(../../../images/footer-bg.png);
+    background-size: cover;
+}
+
+.footer-area .row .col-md-3:first-child ul {
+    padding-top: 25px;
+}
+
+.footer-area li {
+    padding-bottom: 10px;
+}
+
+.footer-area li a {
+    text-decoration: none;
+}
+
+.social-media .icon {
+    height: 20px;
+    width: 20px;
+    color: #1cc7c1;
+    border-radius: 50%;
+    border: 1px solid #6ACECE;
+    padding: 10px;
+}
+
+.social-media .active-icon {
+    background-color: #6ACECE;
+    color: white;
+}
+.social-media li:nth-child(2) .icon:hover,
+.social-media li:nth-child(3) .icon:hover {
+    background-color: #6ACECE;
+    color: white;
+    transition: .3s ease;
+}
+
+.footer-area .copyRight {
+    position: relative;
+    padding-top: 20px;
+}
+
+.footer-area .copyRight::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -999px;
+    background: rgba(12, 11, 27, .2);
+    width: 200%;
+    height: 1px;
+}
