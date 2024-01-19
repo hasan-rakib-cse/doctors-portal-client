@@ -8,11 +8,8 @@ import chair from "../../../images/chair.png";
 
 // type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-const AppointmentHeader = () => {
-    const handleDateChange = date => {
-        console.log(date)
-    }
-
+const AppointmentHeader = ({handleDateChange}) => {
+    
     return (
         <main style={{ height: '550px' }} className="container my-4 py-5">
             <div className="row">
