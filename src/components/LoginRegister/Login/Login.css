@@ -1,0 +1,22 @@
+.separator {
+    text-align: center;
+    margin: 16px 0;
+    position: relative;
+}
+.separator::before,
+.separator::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 45%;
+    height: 1px;
+    background-color: rgb(226, 226, 226);
+}
+.separator::before {
+    right: 0;
+}
+.separator::after {
+    left: 0;
+}
