@@ -25,7 +25,7 @@ const Doctors = () => {
                 <h5 style={{ color: "#1CC7C1" }} className="text-center mb-5">Our Doctors</h5>
                 <div className="row">
                     {
-                        doctorData.map(dcotorInfo => <Doctor dcotorInfo={dcotorInfo} />)
+                        doctorData.map((dcotorInfo, index) => <Doctor key={index}  dcotorInfo={dcotorInfo} />)
                     }
                 </div>
             </div>

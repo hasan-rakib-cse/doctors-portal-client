@@ -1,34 +1,31 @@
 import React, { useContext, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import { createUserWithEmailPassword, handleFbSignIn, handleGoogleSignIn, handleSignOut, initializeLoginFramework, resetPassword, signInWithEmailPassword } from '../LoginRegisterManager/LoginRegisterManager'
+import { createUserWithEmailPassword, initializeLoginFramework } from '../LoginRegisterManager/LoginRegisterManager'
 import { UserContext } from '../../Shared/UserContext/UserContext';
 import LoginBg from '../../../images/login.png';
 
-const Register = () => {
+function Register() {
 
-  document.title = "Login Page";
-
-  const [loading, setIsLoading] = useState(true);
-  const [nweUser, setNewUser] = useState(false);
+  document.title = "Register Page";
 
   // Use context Api for data passing anywhere
   const [loggenInUser, setLoggedInUser] = useContext(UserContext);
+  const [loading, setIsLoading] = useState(true);
 
   // When logged-in the redirect the wanted page.
   const navigate = useNavigate();
   const location = useLocation();
-  // const from = location.state?.from?.pathname || '/login';
 
   // Set the login state and login information
   const [user, setUser] = useState({
-    isSignin: false,
+    isSignedIn: false,
     name: '',
     email: '',
     password: '',
     photo: '',
     error: '',
-    success: ''
+    success: false
   })
 
   // Initialize Firebase
@@ -74,7 +71,7 @@ const Register = () => {
   const handleResponse = (res, redirect) => {
     setUser(res);
     setLoggedInUser(res);
-    if (redirect) {
+    if (res && redirect) {
       navigate("/login");
     }
   }

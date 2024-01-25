@@ -1,35 +1,33 @@
 import React, { useContext, useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 
-import { createUserWithEmailPassword, handleFbSignIn, handleGoogleSignIn, handleSignOut, initializeLoginFramework, resetPassword, signInWithEmailPassword } from '../LoginRegisterManager/LoginRegisterManager'
+import { createUserWithEmailPassword, handleGoogleSignIn, handleSignOut, initializeLoginFramework, resetPassword, signInWithEmailPassword } from '../LoginRegisterManager/LoginRegisterManager'
 import { UserContext } from '../../Shared/UserContext/UserContext';
 import LoginBg from '../../../images/login.png';
 import './Login.css'
 
-const Login = () => {
+function Login() {
 
   document.title = "Login Page";
 
-  const [loading, setIsLoading] = useState(true);
-  const [nweUser, setNewUser] = useState(false);
-
   // Use context Api for data passing anywhere
-  const [loggenInUser, setLoggedInUser] = useContext(UserContext);
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [loading, setIsLoading] = useState(true);
 
   // When logged-in the redirect the wanted page.
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/'
 
   // Set the login state and login information
   const [user, setUser] = useState({
-    isSignin: false,
+    isSignedIn: false,
     name: '',
     email: '',
     password: '',
     photo: '',
     error: '',
-    success: ''
+    success: false
   })
 
   // Initialize Firebase
@@ -38,32 +36,33 @@ const Login = () => {
   // Sign In with Google
   const googleSignIn = () => {
     handleGoogleSignIn()
-      .then(res => {
-        handleResponse(res, true)
-      });
+    .then(res => {
+      console.log(res)
+      handleResponse(res, true)
+    });
   }
 
-  // Sign Out with Google
+  // Sign Out
   const signOut = () => {
     handleSignOut()
-      .then(res => {
-        handleResponse(res, false)
-      })
+    .then(res => {
+      handleResponse(res, false)
+    })
   }
 
   // Save email & password in state
   const handleBlur = (e) => {
     let isFieldValid = true;
-    if (e.target.name === 'email') {
+    if(e.target.name === 'email') {
       isFieldValid = /\S+@\S+\.\S+/.test(e.target.value);
     }
-    if (e.target.name === 'password') {
+    if(e.target.name === 'password') {
       const isPasswordValid = e.target.value.length > 5;
       const passwordHasNumber = /\d{1}/.test(e.target.value);
       isFieldValid = isPasswordValid && passwordHasNumber;
     }
-    if (isFieldValid) {
-      const newUserInfo = { ...user };
+    if(isFieldValid) {
+      const newUserInfo = {...user};
       newUserInfo[e.target.name] = e.target.value;
       setUser(newUserInfo);
     }
@@ -73,31 +72,22 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Sign Up with Email & Password
-    if (user.email && user.password) {
-      createUserWithEmailPassword(user.name, user.email, user.password)
-        .then(res => {
-          handleResponse(res, true);
-          setIsLoading(false)
-        })
-    }
-
     // Sign In with Email & Password
-    if (user.email && user.password) {
+    if(user.email && user.password) {
       signInWithEmailPassword(user.email, user.password)
-        .then(res => {
-          handleResponse(res, true)
-          setIsLoading(false)
-        })
+      .then(res => {
+        handleResponse(res, true)
+        setIsLoading(false)
+      })
     }
   }
 
   // same code optimized.
   const handleResponse = (res, redirect) => {
     setUser(res);
-    setLoggedInUser(res);
-    if (redirect) {
-      navigate(from, { replace: true });
+    setLoggedInUser(res)
+    if(redirect) {
+      navigate(from, {replace: true});
     }
   }
 
