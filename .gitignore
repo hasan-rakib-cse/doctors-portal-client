@@ -24,3 +24,4 @@ yarn-error.log*
 
 # environment file
 /.env
+/src/components/LoginRegister/LoginRegisterManager/firebase.config.js
