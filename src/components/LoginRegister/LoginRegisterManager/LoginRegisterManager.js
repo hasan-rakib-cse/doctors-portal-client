@@ -4,7 +4,7 @@ import 'firebase/compat/auth';
 // import 'firebase/compat/firestore';
 import firebaseConfig from './firebase.config';
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword,
-  updateProfile, FacebookAuthProvider, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
+  updateProfile, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 
 firebase.initializeApp(firebaseConfig)
 
@@ -52,29 +52,6 @@ const setUserToken = () => {
   }).catch(function(error) {
     // Handle error
   });
-}
-
-// Sign In with Facebook
-export const handleFbSignIn = () => {
-    const facebookProvider = new FacebookAuthProvider();
-    
-    return signInWithPopup(auth, facebookProvider)
-    .then((result) => {
-      const user = result.user;
-      return user;
-      user.success = true;
-    })
-    .catch((error) => {
-
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      const email = error.customData.email;
-      const credential = FacebookAuthProvider.credentialFromError(error);
-      console.log(errorCode)
-      console.log(errorMessage)
-      console.log(email)
-      console.log(credential)
-    });
 }
 
 // Sign Out with Google

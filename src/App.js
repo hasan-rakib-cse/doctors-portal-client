@@ -10,9 +10,9 @@ import Error from './components/Error/Error';
 import About from './components/About/About';
 import DentalServices from './components/DentalServices/DentalServices';
 import Reviews from './components/Reviews/Reviews';
-import Blog from './components/Blog/Blog';
 import ContactUs from './components/ContactUs/ContactUs';
 import PrivateRoute from './components/LoginRegister/PrivateRoute/PrivateRoute';
+import BlogHome from './components/Blog/BlogHome/BlogHome';
 
 function App() {
 
@@ -24,10 +24,11 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home></Home>} />
+            <Route path='/appointment' element={<PrivateRoute> <Appointment></Appointment> </PrivateRoute>} />
             <Route path='/about' element={<About></About>} />
             <Route path='/dental-service' element={<DentalServices></DentalServices>} />
             <Route path='/reviews' element={<Reviews></Reviews>} />
-            <Route path="/blog" element={<PrivateRoute> <Blog></Blog> </PrivateRoute>} />
+            <Route path="/blog" element={<PrivateRoute> <BlogHome></BlogHome> </PrivateRoute>} />
             <Route path='/contact-us' element={<ContactUs></ContactUs>} />
             <Route path='/appointment' element={<Appointment></Appointment>} />
             <Route path='/login' element={<Login></Login>} />
