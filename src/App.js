@@ -7,12 +7,15 @@ import Login from './components/LoginRegister/Login/Login';
 import Register from './components/LoginRegister/Register/Register';
 import { UserContext } from './components/Shared/UserContext/UserContext';
 import Error from './components/Error/Error';
-import About from './components/About/About';
-import DentalServices from './components/DentalServices/DentalServices';
-import Reviews from './components/Reviews/Reviews';
-import ContactUs from './components/ContactUs/ContactUs';
 import PrivateRoute from './components/LoginRegister/PrivateRoute/PrivateRoute';
-import BlogHome from './components/Blog/BlogHome/BlogHome';
+import Dashboard from './components/Dashboard/Dashboard/Dashboard';
+import AllPatients from './components/AllPatients/AllPatients/AllPatients';
+import AddDoctor from './components/AddDoctor/AddDoctor';
+import Contact from './components/Contact/Contact/Contact';
+import About from './components/About/About/About';
+import Blog from './components/Blog/Blog/Blog';
+import DentalServices from './components/DentalServices/DentalServices/DentalServices';
+import Reviews from './components/Reviews/Reviews/Reviews';
 
 function App() {
 
@@ -28,9 +31,13 @@ function App() {
             <Route path='/about' element={<About></About>} />
             <Route path='/dental-service' element={<DentalServices></DentalServices>} />
             <Route path='/reviews' element={<Reviews></Reviews>} />
-            <Route path="/blog" element={<PrivateRoute> <BlogHome></BlogHome> </PrivateRoute>} />
-            <Route path='/contact-us' element={<ContactUs></ContactUs>} />
+            <Route path="/blog" element={<PrivateRoute> <Blog></Blog> </PrivateRoute>} />
+            <Route path='/contact' element={<Contact></Contact>} />
             <Route path='/appointment' element={<Appointment></Appointment>} />
+            <Route path="/dashboard" element={<PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>} />
+            <Route path="/dashboard/appointment" element={<PrivateRoute> <Dashboard></Dashboard> </PrivateRoute>} />
+            <Route path='/dashboard/allPatients' element={<AllPatients></AllPatients>} />
+            <Route path="/addDoctor" element={<PrivateRoute> <AddDoctor></AddDoctor> </PrivateRoute>} />
             <Route path='/login' element={<Login></Login>} />
             <Route path='/register' element={<Register></Register>} />
             <Route path='*' element={<Error></Error>} />

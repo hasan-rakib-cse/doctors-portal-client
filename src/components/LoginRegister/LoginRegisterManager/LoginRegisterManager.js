@@ -30,7 +30,7 @@ export const handleGoogleSignIn = () => {
         name: displayName,
         email: email,
         photo: photoURL,
-        success: true
+        success: true,
       }
       setUserToken();
     //   setUser(signedInUser);
@@ -46,13 +46,7 @@ export const handleGoogleSignIn = () => {
     });
 }
 
-const setUserToken = () => {
-  firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-    sessionStorage.setItem('token', idToken)
-  }).catch(function(error) {
-    // Handle error
-  });
-}
+
 
 // Sign Out with Google
 export const handleSignOut = () => {
@@ -100,6 +94,7 @@ export const handleSignOut = () => {
         const newUserInfo = res.user;
         newUserInfo.error = '';
         newUserInfo.success = true;
+        setUserToken();
         return newUserInfo;
       })
 
@@ -146,6 +141,14 @@ export const resetPassword = (email) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     // ..
+  });
+}
+
+const setUserToken = () => {
+  firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+    sessionStorage.setItem('token', idToken)
+  }).catch(function(error) {
+    // Handle error
   });
 }
 

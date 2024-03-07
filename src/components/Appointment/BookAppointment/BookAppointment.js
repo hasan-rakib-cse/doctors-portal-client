@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BookingCard from '../BookingCard/BookingCard'
 
 const bookingData = [
@@ -47,13 +47,16 @@ const bookingData = [
 ]
 
 const BookAppointment = ({ date }) => {
+    const [bookingSuccess, setBookingSuccess] = useState(false);
+
     return (
         <section>
             <h2 className='text-center text-brand mb-5'>Available Appointments on {date.toDateString()}</h2>
+            {bookingSuccess && alert('Appointment Created Successfuly')}
             <div className="container">
                 <div className="row">
                     {
-                        bookingData.map(booking => <BookingCard key={booking.id} booking={booking} date={date} ></BookingCard>)
+                        bookingData.map(booking => <BookingCard key={booking.id} booking={booking} date={date} setBookingSuccess={setBookingSuccess} ></BookingCard>)
                     }
                 </div>
             </div>

@@ -14,5 +14,6 @@
     width: 100%;
     height: 100%;
     background: rgba(12, 11, 27, .1);
+    opacity: .9;
     z-index: -1;
 }

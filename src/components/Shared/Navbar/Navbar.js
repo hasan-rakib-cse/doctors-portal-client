@@ -22,8 +22,9 @@ const Navbar = () => {
                     <li className="nav-item"><NavLink to={'/about'} className='navlink me-5'>About</NavLink></li>
                     <li className="nav-item"><NavLink to={'/dental-service'} className='navlink me-5'>Dental Services</NavLink></li>
                     <li className="nav-item"><NavLink to={'/reviews'} className='navlink me-5'>Reviews</NavLink></li>
+                    <li className="nav-item"><NavLink to={'/dashboard/appointment'} className='navlink me-5'>Dashboard</NavLink></li>
                     <li className="nav-item"><NavLink to={'/blog'} className='navlink me-5'>Blog</NavLink></li>
-                    <li className="nav-item"><NavLink to={'/contact-us'} className='navlink me-5'>Contact Us</NavLink></li>
+                    <li className="nav-item"><NavLink to={'/contact'} className='navlink me-5'>Contact Us</NavLink></li>
                 </ul>
                 {(loggedInUser.email || sessionStorage.getItem('token')) && <button onClick={() => (getSingOut())}>Sign Out</button>}
             </div>

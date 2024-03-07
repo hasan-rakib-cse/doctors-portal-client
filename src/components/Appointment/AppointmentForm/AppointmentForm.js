@@ -23,8 +23,8 @@ const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
     const onSubmit = (data) => {
 
         data.service = appointmentOn;
-        data.date = date;
-        data.created = new Date();
+        data.date = date.toLocaleDateString();
+        data.created = new Date().toLocaleDateString();
 
         // console.log(data)
         fetch('http://localhost:4000/addAppointment', {
@@ -71,7 +71,7 @@ const AppointmentForm = ({ modalIsOpen, closeModal, appointmentOn, date }) => {
                                 <option disabled={true} value="Not Set">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
-                                <option value="Not Set">Male</option>
+                                <option value="Not Set">Other</option>
                             </select>
                             {errors.gender?.type === "required" && (<span className='text-danger'>Gender is required</span>)}
                         </div>
